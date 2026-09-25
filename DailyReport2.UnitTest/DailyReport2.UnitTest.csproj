@@ -1,0 +1,8 @@
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProjectGuid>{C2D0A6B8-7A3C-4D0C-AB1F-52F2DAA58A10}</ProjectGuid><OutputType>Library</OutputType><RootNamespace>DailyReport2.UnitTest</RootNamespace><AssemblyName>DailyReport2.UnitTest</AssemblyName><TargetFrameworkVersion>v4.8</TargetFrameworkVersion><OutputPath>bin\$(Configuration)\</OutputPath></PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Any CPU' "><OutputPath>bin\Release\</OutputPath></PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Any CPU' "><OutputPath>bin\Debug\</OutputPath><DefineConstants>DEBUG;TRACE</DefineConstants></PropertyGroup>
+  <ItemGroup><Reference Include="System" /><Reference Include="System.Core" /><Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework"><HintPath>$(SolutionDir)packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath></Reference><Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions"><HintPath>$(SolutionDir)packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath></Reference><ProjectReference Include="..\DailyReport2\DailyReport2.csproj"><Project>{2B5D8A20-9B9C-4D8E-9A0F-1E0A77D8F2A1}</Project><Name>DailyReport2</Name></ProjectReference></ItemGroup>
+  <ItemGroup><Compile Include="*.cs" /></ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
