@@ -1,0 +1,91 @@
+<Window x:Class="DailyReport2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="日報"
+        Height="800"
+        Width="900"
+        MinHeight="650"
+        MinWidth="600">
+    <DockPanel Margin="12">
+        <Button DockPanel.Dock="Bottom"
+                Content="保存"
+                Command="{Binding SaveCommand}"
+                Height="34"
+                Margin="0,8,0,0"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Text="名前:" VerticalAlignment="Center"/>
+                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                         Width="220"
+                         Margin="8,0,20,0"/>
+                <TextBlock Text="日付:" VerticalAlignment="Center"/>
+                <DatePicker SelectedDate="{Binding Date}" Margin="8,0,0,0"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="1"
+                       Text="{Binding ErrorMessage}"
+                       Foreground="Red"
+                       Margin="0,8,0,4"/>
+
+            <GroupBox Grid.Row="2" Header="定例作業" Margin="2">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                        <Button Content="行追加" Command="{Binding AddRegularCommand}"/>
+                        <Button Content="行削除" Command="{Binding RemoveRegularCommand}"/>
+                    </StackPanel>
+                    <DataGrid ItemsSource="{Binding RegularTasks}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="内容"
+                                                Binding="{Binding Content, UpdateSourceTrigger=PropertyChanged}"
+                                                Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="3" Header="スキルアップ活動" Margin="2">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                        <Button Content="行追加" Command="{Binding AddSkillCommand}"/>
+                        <Button Content="行削除" Command="{Binding RemoveSkillCommand}"/>
+                    </StackPanel>
+                    <DataGrid ItemsSource="{Binding SkillUpActivities}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="内容"
+                                                Binding="{Binding Content, UpdateSourceTrigger=PropertyChanged}"
+                                                Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="4" Header="成果物" Margin="2">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                        <Button Content="行追加" Command="{Binding AddDeliverableCommand}"/>
+                        <Button Content="行削除" Command="{Binding RemoveDeliverableCommand}"/>
+                    </StackPanel>
+                    <DataGrid ItemsSource="{Binding Deliverables}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="名称"
+                                                Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                                                Width="*"/>
+                            <DataGridTextColumn Header="リンク"
+                                                Binding="{Binding Link, UpdateSourceTrigger=PropertyChanged}"
+                                                Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </GroupBox>
+        </Grid>
+    </DockPanel>
+</Window>
